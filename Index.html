@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Kicks e-POWER - Costo Económico y Ambiental</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Enlace al archivo CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl shadow-lg shadow-emerald-500/20 text-xl">
+                    🔋
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                        Simulador Kicks e-POWER
+                    </h1>
+                    <p class="text-xs text-slate-400 font-medium tracking-wide">Costo Económico y Ambiental | Química 4</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="resetDefaults()" class="cursor-pointer px-4 py-2 text-sm font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition-all border border-slate-700">
+                    🔄 Restablecer Valores
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+
+        <!-- SECCIÓN SUPERIOR: Enlaces del Proyecto -->
+        <section class="space-y-4">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-800 pb-2">📂 Navegación del Proyecto</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- Tarjeta 1: Componentes-Chapitas -->
+                <a href="#" class="bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden group hover:border-emerald-500/50 hover:bg-slate-800/80 transition-all duration-300 shadow-md">
+                    <div class="h-32 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400');"></div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-sm text-slate-100 group-hover:text-emerald-400 transition-colors">1. Componentes-Chapitas</h4>
+                        <p class="text-xs text-slate-400 mt-1">Arquitectura modular y componentes del sistema e-POWER.</p>
+                    </div>
+                </a>
+
+                <!-- Tarjeta 2: Huella-Rodri -->
+                <a href="#" class="bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden group hover:border-emerald-500/50 hover:bg-slate-800/80 transition-all duration-300 shadow-md">
+                    <div class="h-32 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=400');"></div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-sm text-slate-100 group-hover:text-emerald-400 transition-colors">2. Huella-Rodri</h4>
+                        <p class="text-xs text-slate-400 mt-1">Impacto ecológico global y mitigación de huella de carbono.</p>
+                    </div>
+                </a>
+
+                <!-- Tarjeta 3: Seguridad-Rodo -->
+                <a href="#" class="bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden group hover:border-emerald-500/50 hover:bg-slate-800/80 transition-all duration-300 shadow-md">
+                    <div class="h-32 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&q=80&w=400');"></div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-sm text-slate-100 group-hover:text-emerald-400 transition-colors">3. Seguridad-Rodo</h4>
+                        <p class="text-xs text-slate-400 mt-1">Sistemas de protección activa y manejo del módulo eléctrico.</p>
+                    </div>
+                </a>
+
+                <!-- Tarjeta 4: Realidad-Morales -->
+                <a href="#" class="bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden group hover:border-emerald-500/50 hover:bg-slate-800/80 transition-all duration-300 shadow-md">
+                    <div class="h-32 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&q=80&w=400');"></div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-sm text-slate-100 group-hover:text-emerald-400 transition-colors">4. Realidad-Morales</h4>
+                        <p class="text-xs text-slate-400 mt-1">Viabilidad en el mercado actual y desempeño real en calle.</p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Panel Principal Interactivo -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Panel Izquierdo: Entrada de Datos -->
+            <section class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6 space-y-6">
+                <h2 class="text-lg font-bold flex items-center gap-2 border-b border-slate-700/50 pb-3">
+                    <span>🎛️</span> Parámetros del Simulador
+                </h2>
+
+                <!-- Input: Kilómetros Anuales -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <label for="kmAnuales" class="text-sm font-medium text-slate-300 flex items-center gap-1.5">
+                            Distancia Anual 
+                            <span class="group relative cursor-help text-xs text-slate-500 bg-slate-700/50 px-1.5 rounded-full">?
+                                <span class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-slate-950 text-slate-300 text-xs p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity font-normal shadow-xl border border-slate-800">Promedio citadino en México: 15,000 km al año.</span>
+                            </span>
+                        </label>
+                        <input type="number" id="kmAnualesNum" class="w-20 bg-slate-900 border border-slate-700 rounded px-2 py-0.5 text-right text-sm font-semibold text-emerald-400 focus:outline-none focus:border-emerald-500">
+                    </div>
+                    <input type="range" id="kmAnuales" min="5000" max="40000" step="1000" class="w-full accent-emerald-500 h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                </div>
+
+                <!-- Input: Años de Análisis -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <label for="anos" class="text-sm font-medium text-slate-300 flex items-center gap-1.5">
+                            Período de Análisis
+                        </label>
+                        <span id="anosVal" class="text-sm font-bold text-emerald-400">10 años</span>
+                    </div>
+                    <input type="range" id="anos" min="5" max="15" step="1" class="w-full accent-emerald-500 h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                </div>
+
+                <div class="border-t border-slate-700/50 pt-4 space-y-4">
+                    <!-- Precios Iniciales -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-xs text-slate-400 font-medium">Precio e-POWER ($)</label>
+                            <input type="number" id="precioEPower" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-sm font-semibold text-slate-200 focus:outline-none focus:border-cyan-500">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs text-slate-400 font-medium">Precio Gasolina ($)</label>
+                            <input type="number" id="precioGas" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-sm font-semibold text-slate-200 focus:outline-none focus:border-cyan-500">
+                        </div>
+                    </div>
+
+                    <!-- Rendimientos km/l -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-xs text-slate-400 font-medium">Rendimiento e-POWER (km/l)</label>
+                            <input type="number" id="rendEPower" step="0.1" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-sm font-semibold text-slate-200 focus:outline-none focus:border-cyan-500">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs text-slate-400 font-medium">Rendimiento Gasolina (km/l)</label>
+                            <input type="number" id="rendGas" step="0.1" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-sm font-semibold text-slate-200 focus:outline-none focus:border-cyan-500">
+                        </div>
+                    </div>
+
+                    <!-- Precio Combustible -->
+                    <div class="space-y-1">
+                        <label class="text-xs text-slate-400 font-medium flex items-center gap-1">Precio Litro Magna ($) 
+                            <span class="group relative cursor-help text-[10px] text-slate-500 bg-slate-700/50 px-1.5 rounded-full">?
+                                <span class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-slate-950 text-slate-300 text-xs p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity font-normal shadow-xl border border-slate-800">Precio promedio regulado base.</span>
+                            </span>
+                        </label>
+                        <input type="number" id="precioCombustible" step="0.01" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-sm font-semibold text-slate-200 focus:outline-none focus:border-cyan-500">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Panel Derecho: Resultados Financieros y Ecológicos -->
+            <section class="lg:col-span-2 space-y-6">
+                <!-- Grid de Tarjetas de KPI -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="bg-slate-800/40 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Brecha de Inversión</span>
+                        <div class="mt-2">
+                            <span id="diffPrecio" class="text-xl font-extrabold text-slate-200">$-</span>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Costo extra inicial del e-POWER.</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800/40 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Ahorro Económico Anual</span>
+                        <div class="mt-2">
+                            <span id="ahorroAnualEcon" class="text-xl font-extrabold text-cyan-400">$-</span>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Dinero no gastado en gasolina.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-emerald-950/40 to-slate-900/40 border border-emerald-800/40 rounded-xl p-4 flex flex-col justify-between">
+                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Retorno de Inversión</span>
+                        <div class="mt-2">
+                            <span id="tiempoRetorno" class="text-xl font-extrabold text-emerald-400">-</span>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Tiempo estimado de recuperación.</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800/40 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Ahorro Anual de CO₂</span>
+                        <div class="mt-2">
+                            <span id="ahorroAnualCO2" class="text-xl font-extrabold text-slate-200">- kg</span>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Evitado a la atmósfera.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-teal-950/40 to-slate-900/40 border border-teal-800/40 rounded-xl p-4 flex flex-col justify-between sm:col-span-2">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-wider">Mitigación Ecológica Total</span>
+                        <div class="mt-2">
+                            <span id="ahorroTotalCO2" class="text-xl font-extrabold text-teal-400">- Toneladas</span>
+                            <p class="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
+                                <span>🌳</span> Equivale a la absorción de aproximadamente <span id="arbolesEquiv" class="font-bold text-white">-</span> árboles maduros en un año.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráficas Estadísticas -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-800/30 border border-slate-800/80 rounded-xl p-4">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Análisis de Costos de Operación Acumulados</h4>
+                        <div class="h-64"><canvas id="chartFinanciero"></canvas></div>
+                    </div>
+                    <div class="bg-slate-800/30 border border-slate-800/80 rounded-xl p-4">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Balance Estequiométrico Mensual de CO₂ (kg)</h4>
+                        <div class="h-64"><canvas id="chartAmbiental"></canvas></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Tabla Analítica de Datos Proyectados -->
+        <section class="bg-slate-800/20 border border-slate-850 rounded-2xl p-6 overflow-x-auto">
+            <h3 class="text-base font-bold mb-4 flex items-center gap-2">📊 Matriz de Proyección Química y Económica Acumulada</h3>
+            <table class="w-full text-left text-sm border-collapse">
+                <thead>
+                    <tr class="border-b border-slate-700 text-slate-400 text-xs uppercase tracking-wider">
+                        <th class="py-3 px-4">Año</th>
+                        <th class="py-3 px-4">Costo e-POWER</th>
+                        <th class="py-3 px-4">Costo Gasolina</th>
+                        <th class="py-3 px-4">Balance Financiero</th>
+                        <th class="py-3 px-4 text-emerald-400">CO₂ Reducido Neto</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaProyeccion" class="divide-y divide-slate-800/50 font-mono text-xs">
+                    <!-- Filas inyectadas por JS -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Footer Institucional -->
+    <footer class="border-t border-slate-800/80 bg-slate-950 py-6 text-center text-xs text-slate-500 font-medium">
+        <p>Proyecto Escolar | Academia de Ciencias Experimentales — Química 4</p>
+        <p class="text-slate-600 mt-1">Estudio Técnico Comparativo: Nissan Kicks e-POWER vs Alternativa de Combustión Interna convencional</p>
+    </footer>
+
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
