@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador Kicks e-POWER - Costo Económico y Ambiental</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Enlace al archivo CSS personalizado -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen font-sans antialiased selection:bg-emerald-500 selection:text-white">
 
-    <!-- Header / Navbar -->
     <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
@@ -37,60 +33,13 @@
 
     <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
 
-        <!-- SECCIÓN SUPERIOR: Enlaces del Proyecto -->
-        <section class="space-y-4">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-800 pb-2">📂 Navegación del Proyecto</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                
-                <!-- Tarjeta 1: Componentes-Chapitas -->
-                <a href="#" class="bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden group hover:border-emerald-500/50 hover:bg-slate-800/80 transition-all duration-300 shadow-md">
-                    <div class="h-32 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400');"></div>
-                    <div class="p-4">
-                        <h4 class="font-bold text-sm text-slate-100 group-hover:text-emerald-400 transition-colors">1. Componentes-Chapitas</h4>
-                        <p class="text-xs text-slate-400 mt-1">Arquitectura modular y componentes del sistema e-POWER.</p>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 2: Huella-Rodri -->
-                <a href="#" class="bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden group hover:border-emerald-500/50 hover:bg-slate-800/80 transition-all duration-300 shadow-md">
-                    <div class="h-32 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=400');"></div>
-                    <div class="p-4">
-                        <h4 class="font-bold text-sm text-slate-100 group-hover:text-emerald-400 transition-colors">2. Huella-Rodri</h4>
-                        <p class="text-xs text-slate-400 mt-1">Impacto ecológico global y mitigación de huella de carbono.</p>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 3: Seguridad-Rodo -->
-                <a href="#" class="bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden group hover:border-emerald-500/50 hover:bg-slate-800/80 transition-all duration-300 shadow-md">
-                    <div class="h-32 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&q=80&w=400');"></div>
-                    <div class="p-4">
-                        <h4 class="font-bold text-sm text-slate-100 group-hover:text-emerald-400 transition-colors">3. Seguridad-Rodo</h4>
-                        <p class="text-xs text-slate-400 mt-1">Sistemas de protección activa y manejo del módulo eléctrico.</p>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 4: Realidad-Morales -->
-                <a href="#" class="bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden group hover:border-emerald-500/50 hover:bg-slate-800/80 transition-all duration-300 shadow-md">
-                    <div class="h-32 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&q=80&w=400');"></div>
-                    <div class="p-4">
-                        <h4 class="font-bold text-sm text-slate-100 group-hover:text-emerald-400 transition-colors">4. Realidad-Morales</h4>
-                        <p class="text-xs text-slate-400 mt-1">Viabilidad en el mercado actual y desempeño real en calle.</p>
-                    </div>
-                </a>
-
-            </div>
-        </section>
-
-        <!-- Panel Principal Interactivo -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <!-- Panel Izquierdo: Entrada de Datos -->
             <section class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6 space-y-6">
                 <h2 class="text-lg font-bold flex items-center gap-2 border-b border-slate-700/50 pb-3">
                     <span>🎛️</span> Parámetros del Simulador
                 </h2>
 
-                <!-- Input: Kilómetros Anuales -->
                 <div class="space-y-2">
                     <div class="flex justify-between items-center">
                         <label for="kmAnuales" class="text-sm font-medium text-slate-300 flex items-center gap-1.5">
@@ -104,7 +53,6 @@
                     <input type="range" id="kmAnuales" min="5000" max="40000" step="1000" class="w-full accent-emerald-500 h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer">
                 </div>
 
-                <!-- Input: Años de Análisis -->
                 <div class="space-y-2">
                     <div class="flex justify-between items-center">
                         <label for="anos" class="text-sm font-medium text-slate-300 flex items-center gap-1.5">
@@ -116,7 +64,6 @@
                 </div>
 
                 <div class="border-t border-slate-700/50 pt-4 space-y-4">
-                    <!-- Precios Iniciales -->
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-1">
                             <label class="text-xs text-slate-400 font-medium">Precio e-POWER ($)</label>
@@ -128,7 +75,6 @@
                         </div>
                     </div>
 
-                    <!-- Rendimientos km/l -->
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-1">
                             <label class="text-xs text-slate-400 font-medium">Rendimiento e-POWER (km/l)</label>
@@ -140,7 +86,6 @@
                         </div>
                     </div>
 
-                    <!-- Precio Combustible -->
                     <div class="space-y-1">
                         <label class="text-xs text-slate-400 font-medium flex items-center gap-1">Precio Litro Magna ($) 
                             <span class="group relative cursor-help text-[10px] text-slate-500 bg-slate-700/50 px-1.5 rounded-full">?
@@ -152,9 +97,7 @@
                 </div>
             </section>
 
-            <!-- Panel Derecho: Resultados Financieros y Ecológicos -->
             <section class="lg:col-span-2 space-y-6">
-                <!-- Grid de Tarjetas de KPI -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="bg-slate-800/40 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
                         <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Brecha de Inversión</span>
@@ -195,7 +138,6 @@
                     </div>
                 </div>
 
-                <!-- Gráficas Estadísticas -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-slate-800/30 border border-slate-800/80 rounded-xl p-4">
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Análisis de Costos de Operación Acumulados</h4>
@@ -209,7 +151,6 @@
             </section>
         </div>
 
-        <!-- Tabla Analítica de Datos Proyectados -->
         <section class="bg-slate-800/20 border border-slate-850 rounded-2xl p-6 overflow-x-auto">
             <h3 class="text-base font-bold mb-4 flex items-center gap-2">📊 Matriz de Proyección Química y Económica Acumulada</h3>
             <table class="w-full text-left text-sm border-collapse">
@@ -223,19 +164,16 @@
                     </tr>
                 </thead>
                 <tbody id="tablaProyeccion" class="divide-y divide-slate-800/50 font-mono text-xs">
-                    <!-- Filas inyectadas por JS -->
-                </tbody>
+                    </tbody>
             </table>
         </section>
     </main>
 
-    <!-- Footer Institucional -->
     <footer class="border-t border-slate-800/80 bg-slate-950 py-6 text-center text-xs text-slate-500 font-medium">
         <p>Proyecto Escolar | Academia de Ciencias Experimentales — Química 4</p>
         <p class="text-slate-600 mt-1">Estudio Técnico Comparativo: Nissan Kicks e-POWER vs Alternativa de Combustión Interna convencional</p>
     </footer>
 
-    <!-- Enlace al archivo JavaScript externo -->
     <script src="script.js"></script>
 </body>
 </html>
